@@ -39,7 +39,39 @@ public class Series {
     public String youtubeId;
     public String hashtag;
     public String source;
-    public String airingStats;
+//    public ArrayList<String> airingStats;
+
+    public Series(int id, String seriesType, String titleRomaji, String titleEnglish, String titleJapanese, String type, String startDate, String endDate, int startDateFuzzy, int endDateFuzzy, int season, String description, ArrayList<String> synonyms, ArrayList<String> genres, Boolean adult, double averageScore, int popularity, Boolean favorite, String imageUrlSml, String imageUrlMed, String imageUrlLge, String imageUrlBanner, int updateAt, int totalEpisodes, int duration, String airingStatus, String youtubeId, String hashtag, String source) {
+        this.id = id;
+        this.seriesType = seriesType;
+        this.titleRomaji = titleRomaji;
+        this.titleEnglish = titleEnglish;
+        this.titleJapanese = titleJapanese;
+        this.type = type;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startDateFuzzy = startDateFuzzy;
+        this.endDateFuzzy = endDateFuzzy;
+        this.season = season;
+        this.description = description;
+        this.synonyms = synonyms;
+        this.genres = genres;
+        this.adult = adult;
+        this.averageScore = averageScore;
+        this.popularity = popularity;
+        this.favorite = favorite;
+        this.imageUrlSml = imageUrlSml;
+        this.imageUrlMed = imageUrlMed;
+        this.imageUrlLge = imageUrlLge;
+        this.imageUrlBanner = imageUrlBanner;
+        this.updateAt = updateAt;
+        this.totalEpisodes = totalEpisodes;
+        this.duration = duration;
+        this.airingStatus = airingStatus;
+        this.youtubeId = youtubeId;
+        this.hashtag = hashtag;
+        this.source = source;
+    }
 }
 
 
