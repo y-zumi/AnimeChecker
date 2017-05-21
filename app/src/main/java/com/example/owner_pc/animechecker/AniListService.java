@@ -14,20 +14,43 @@ import retrofit2.http.Query;
  */
 
 public interface AniListService {
+    // アクセストークン取得
     @POST("auth/access_token")
-    Call<Token> requestToken(@Query("grant_type") String grantType,
-                             @Query("client_id") String clientId,
-                             @Query("client_secret") String clientSecret
-                        );
+//    Call<Token> requestToken(@Query("grant_type") String grantType,
+    Observable<Token> requestToken(@Query("grant_type") String grantType,
+                                   @Query("client_id") String clientId,
+                                   @Query("client_secret") String clientSecret);
+
+    // 指定時期のアニメ一覧
     @GET("browse/anime/?sort=popularity-desc&full_page=ture")
-    Observable<Series> listSeries(@Query("year") String year,
-                                  @Query("season") String season,
-                                  @Query("type") String type,
-                                  @Query("access_token") String token
-    );
-    @GET("anime/{id}")
-    Observable<Series> series(@Path("id") String id,
-                              @Query("access_token") String token);
+    Observable<List<Anime>> listAnimes(@Query("year") String year,
+                                       @Query("season") String season,
+                                       @Query("type") String type,
+                                       @Query("access_token") String token);
+
+    // アニメ詳細画面の概要(声優、スタッフ、制作会社、各種リンク含む)
+    @GET("anime/{id}/page")
+    Observable<AnimePage> detailAnime(@Path("id") String id,
+                                      @Query("access_token") String token);
+
+    // キャラクターの詳細情報(日本語取得のため)
+    @GET("character/{id}")
+    Observable<Character> detailCharacter(@Path("id") String id,
+                                          @Query("access_token") String token);
+
+    // スタッフ,声優の詳細情報(日本語取得のため)
+    @GET("staff/{id}")
+    Observable<Staff> detailStaff(@Path("id") String id,
+                                  @Query("access_token") String token);
+    // 監督の関連作品
+    @GET("staff/{id}/page")
+    Observable<StaffPage> listDirectorAnimes(@Path("id") String id,
+                                            @Query("access_token") String token);
+    // 制作会社の関連作品
+    @GET("studio/{id}/page")
+    Observable<StudioPage> listStudioAnimes(@Path("id") String id,
+                                            @Query("access_token") String token);
+
 //    @GET("anime/{id}")
 //    Observable<>
 
