@@ -1,53 +1,21 @@
 package com.example.owner_pc.animechecker;
 
-
 import java.util.ArrayList;
 
 /**
- * Created by owner-PC on 2017/05/21.
+ * Created by owner-PC on 2017/05/12.
  */
 
-public class Anime {
-    public int id;
-    public String seriesType;
-    public String titleRomaji;
-    public String titleEnglish;
-    public String titleJapanese;
-    public String type;
-    public String startDate;
-    public String endDate;
-    public int startDateFuzzy;
-    public int endDateFuzzy;
-    public int season;
-    public String description;
-    public ArrayList<String> synonyms;
-    public ArrayList<String> genres;
-    public Boolean adult;
-    public double averageScore;
-    public int popularity;
-    public Boolean favorite;
-    public String imageUrlSml;
-    public String imageUrlMed;
-    public String imageUrlLge;
-    public String imageUrlBanner;
-    public int updateAt;
-    //    public ArrayList<> scoreDistribution;
-//    public ArrayList<> listStats;
-    public int totalEpisodes;
-    public int duration;
-    public String airingStatus;
-    public String youtubeId;
-    public String hashtag;
-    public String source;
+public class AnimePage extends Anime {
 
-//    public ArrayList<String> airingStats;
-
-    public String role;
-
+    public ArrayList<Characters> characters;
+    public ArrayList<StaffSmall> staff;
+    public ArrayList<Studio> studio;
+    public ArrayList<ExternalLinks> externalLinks;
 
     @Override
     public String toString() {
-        return "Anime{" +
+        return "AnimePage{" +
                 "id=" + id +
                 ", seriesType='" + seriesType + '\'' +
                 ", titleRomaji='" + titleRomaji + '\'' +
@@ -77,8 +45,10 @@ public class Anime {
                 ", youtubeId='" + youtubeId + '\'' +
                 ", hashtag='" + hashtag + '\'' +
                 ", source='" + source + '\'' +
-                ", role='" + role + '\'' +
+                ", characters=" + characters +
+                ", staff=" + staff +
+                ", studio=" + studio +
+                ", externalLinks=" + externalLinks +
                 '}';
     }
-
 }
