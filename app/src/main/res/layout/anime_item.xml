@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.owner_pc.animechecker.AnimeItemViewModel" />
@@ -14,13 +13,16 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:clickable="true"
         android:foreground="?selectableItemBackground"
         android:onClick="@{viewModel::onItemClick}"
         android:orientation="vertical"
         app:cardUseCompatPadding="true"
         tools:showIn="@layout/activity_anime_list">
+        <!--android:layout_margin="8dp"-->
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -31,21 +33,21 @@
                 android:id="@+id/anime_image"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_margin="8dp"
                 bind:imageUrl="@{viewModel.animeImageUrl}" />
+                <!--android:layout_margin="8dp"-->
 
             <TextView
                 android:id="@+id/anime_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/anime_image"
                 android:text="@{viewModel.animeName}"
-                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textAppearance="@android:style/TextAppearance.Medium"
                 tools:text="title" />
+                <!--android:layout_marginBottom="4dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
 
         </RelativeLayout>
 
