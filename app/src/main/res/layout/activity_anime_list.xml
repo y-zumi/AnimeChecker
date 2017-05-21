@@ -3,15 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="anime" type="com.example.owner_pc.animechecker.Anime"/>
+        <variable
+            name="viewModel"
+            type="com.example.owner_pc.animechecker.AnimeListViewModel"/>
     </data>
-    <LinearLayout
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
+        android:fitsSystemWindows="true"
+        tools:context=".AnimeListActivity">
+        <include layout="@layout/content_anime_list"/>
+
+        <!-- ViewModelのprogressBarVisibilityをViewのvisibility(Viewが見えるかどうか)で利用する -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{anime.title}"/>
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.progressBarVisibility}"
+            />
+    </android.support.design.widget.CoordinatorLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@{anime.titleJapanese}"/>-->
+    <!--</LinearLayout>-->
 </layout>
