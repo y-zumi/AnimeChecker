@@ -1,4 +1,4 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.view;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -6,43 +6,33 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
+import com.example.owner_pc.animechecker.R;
+import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
 import com.example.owner_pc.animechecker.databinding.ActivityAnimeListBinding;
-
-import org.reactivestreams.Subscriber;
+import com.example.owner_pc.animechecker.model.AniListService;
+import com.example.owner_pc.animechecker.model.entity.Anime;
+import com.example.owner_pc.animechecker.model.entity.AnimeCard;
+import com.example.owner_pc.animechecker.model.entity.AnimePage;
+import com.example.owner_pc.animechecker.viewmodel.AnimeListViewModel;
 
 import java.util.List;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-
 
 
 public class AnimeListActivity extends AppCompatActivity implements AnimeListViewContract {
 //    String accessToken;
     private AnimeAdapter animeAdapter;
     private CoordinatorLayout coordinatorLayout;
+    private AniListService aniListService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityAnimeListBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_anime_list);
-        final AniListService aniListService = ((AnimeCheckerApplication) getApplication()).getAniListService();
+        aniListService = ((AnimeCheckerApplication) getApplication()).getAniListService();
         final AnimeListViewModel viewModel = new AnimeListViewModel((AnimeListViewContract) this, aniListService, this);
         binding.setViewModel(viewModel);
         setupViews();
@@ -138,7 +128,8 @@ public class AnimeListActivity extends AppCompatActivity implements AnimeListVie
 
         // Recycler View
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyler_animes);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         animeAdapter = new AnimeAdapter((Context) this, (AnimeListViewContract) this);
         recyclerView.setAdapter(animeAdapter);
 
@@ -157,12 +148,12 @@ public class AnimeListActivity extends AppCompatActivity implements AnimeListVie
     // ここでPresenterから指示を受けてViewの変更などを行う
 
     @Override
-    public void startDetailActivity(int id) {
-//        DetailActivity.start(this, full_name);
+    public void startDetailActivity(AnimePage animePage) {
+        AnimeDetailActivity.start(this, animePage);
     }
 
     @Override
-    public void showAnimes(List<Anime> animes) {
+    public void showAnimes(List<AnimeCard> animes) {
         animeAdapter.setItemsAndRefresh(animes);
     }
 

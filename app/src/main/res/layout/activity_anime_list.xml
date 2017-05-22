@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.owner_pc.animechecker.AnimeListViewModel"/>
+            type="com.example.owner_pc.animechecker.viewmodel.AnimeListViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".AnimeListActivity">
+        tools:context=".view.AnimeListActivity">
         <include layout="@layout/content_anime_list"/>
 
         <!-- ViewModelのprogressBarVisibilityをViewのvisibility(Viewが見えるかどうか)で利用する -->

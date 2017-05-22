@@ -1,4 +1,4 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.model.entity;
 
 import java.util.ArrayList;
 

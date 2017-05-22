@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.owner_pc.animechecker.viewmodel.AnimeDetailViewModel"/>
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.AnimeDetailActivity">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/anime_banner"
+                android:layout_width="400dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                app:imageUrl="@{viewModel.animeBannerUrl}"
+                android:src="@android:drawable/sym_def_app_icon"/>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/anime_image"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:layout_margin="12dp"
+                        android:layout_alignParentLeft="true"
+                        app:imageUrl="@{viewModel.animeIconUrl}"
+                        android:src="@android:mipmap/sym_def_app_icon" />
+
+                    <TextView
+                        android:id="@+id/anime_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+
+                        android:layout_toRightOf="@id/anime_image"
+                        android:text="@{viewModel.animeTitle}"
+                        tools:text="title"
+                        android:textAppearance="@android:style/TextAppearance.Large" />
+
+                    <LinearLayout
+                        android:id="@+id/buttonPanel"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/anime_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_margin="8dp"
+                            android:text="Official Site"
+                            android:onClick="@{viewModel::onOfficialSiteClick}"/>
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_margin="8dp"
+                            android:text="Twitter"
+                            android:onClick="@{viewModel::onTwitterClick}"/>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/grid1"
+                        android:layout_below="@id/buttonPanel"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <TextView
+                        android:id="@+id/cast_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/grid1"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Cast"
+                        android:gravity="center"
+                        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+                    <TableLayout
+                        android:id="@+id/cast_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cast_text">
+                        <TableRow>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.castList.size() >= 1 ? viewModel.castList.get(0) : "no cast"}'
+                                tools:text="cast 1"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:paddingLeft="8dp"
+                                />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.castList.size() > 1 ? viewModel.castList.get(1) : "no cast"}'
+                                tools:text="cast 2"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                />
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.castList.size() > 2 ? viewModel.castList.get(2) : "no cast"}'
+                                tools:text="cast 3"
+                                android:layout_weight="1"
+                                android:layout_margin="2dp"
+                                android:paddingLeft="8dp"
+                                />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.castList.size() > 3 ? viewModel.castList.get(3) : "no cast"}'
+                                tools:text="cast 4"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                />
+                        </TableRow>
+                    </TableLayout>
+
+                    <View
+                        android:id="@+id/grid2"
+                        android:layout_below="@id/cast_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/darker_gray"/>
+
+
+                    <TextView
+                        android:id="@+id/staff_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/grid2"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Staff"
+                        android:gravity="center"
+                        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+                    <TableLayout
+                        android:id="@+id/staff_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_below="@id/staff_text">
+                        <TableRow>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.staffList.size() > 0 ? viewModel.staffList.get(0) : "no staff"}'
+                                tools:text="staff 1"
+                                android:layout_weight="1"
+                                android:layout_margin="2dp"
+                                android:paddingLeft="8dp"
+                                />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.staffList.size() > 1 ? viewModel.staffList.get(1) : "no staff"}'
+                                tools:text="staff 2"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                />
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.staffList.size() > 2 ? viewModel.staffList.get(2) : "no staff"}'
+                                tools:text="staff 3"
+                                android:layout_weight="1"
+                                android:layout_margin="2dp"
+                                android:paddingLeft="8dp"
+                                />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{viewModel.staffList.size() > 3 ? viewModel.staffList.get(3) : "no staff"}'
+                                tools:text="staff 4"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                />
+                        </TableRow>
+                    </TableLayout>
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="関連作品(制作会社)"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="関連作品(監督)"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>
