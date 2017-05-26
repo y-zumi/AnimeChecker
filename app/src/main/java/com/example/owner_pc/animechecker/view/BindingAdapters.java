@@ -22,6 +22,7 @@ public class BindingAdapters {
         // 画像はGlideというライブラリを使ってデータをセットする
         Glide.with(imageView.getContext())
                 .load(imageUrl)
-                .asBitmap().centerCrop().into(imageView);
+                .asBitmap().into(imageView);
+//                .asBitmap().centerCrop().into(imageView);
     }
 }
