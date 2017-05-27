@@ -333,15 +333,14 @@
                             android:id="@+id/director_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
                             android:layout_marginBottom="16dp"
-                            android:layout_marginLeft="16dp"
                             android:layout_marginTop="16dp"
                             android:text="関連作品(監督)"
-                            android:textAppearance="@android:style/TextAppearance.Medium"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="16dp" />
                     </android.support.constraint.ConstraintLayout>
                 </android.support.v7.widget.CardView>
 
@@ -370,15 +369,14 @@
                             android:id="@+id/studio_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
                             android:layout_marginBottom="16dp"
-                            android:layout_marginLeft="16dp"
                             android:layout_marginTop="16dp"
                             android:text="関連作品(制作会社)"
-                            android:textAppearance="@android:style/TextAppearance.Medium"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginLeft="16dp" />
 
 
                     </android.support.constraint.ConstraintLayout>
