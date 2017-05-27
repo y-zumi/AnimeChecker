@@ -1,6 +1,8 @@
 package com.example.owner_pc.animechecker.model.entity;
 
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ public class Anime implements Serializable {
     public String endDate;
     public int startDateFuzzy;
     public int endDateFuzzy;
-    public int season;
+    public int season = 0;
     public String description;
     public ArrayList<String> synonyms;
     public ArrayList<String> genres;
@@ -45,6 +47,32 @@ public class Anime implements Serializable {
 
     public String role;
 
+
+    public String getSeason() {
+        if (season == 0) {
+            return "";
+        }
+        int year = season / 10;
+        int month = season % 10;
+        StringBuilder str = new StringBuilder();
+        str.append("20").append(year).append("年");
+        switch (month) {
+            case 1:
+                str.append("冬");
+                break;
+            case 2:
+                str.append("春");
+                break;
+            case 3:
+                str.append("夏");
+                break;
+            case 4:
+                str.append("秋");
+                break;
+        }
+        return str.toString();
+
+    }
 
     @Override
     public String toString() {

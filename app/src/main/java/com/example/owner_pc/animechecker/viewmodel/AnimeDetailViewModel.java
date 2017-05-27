@@ -23,6 +23,7 @@ public class AnimeDetailViewModel {
     public ObservableField<String> animeBannerUrl = new ObservableField<>();
     public ObservableField<String> animeIconUrl = new ObservableField<>();
     public ObservableField<String> animeTitle = new ObservableField<>();
+    public ObservableField<String> animeSeason = new ObservableField<>();
 //    public ObservableField<String> officialSiteUrl = new ObservableField<>();
 //    public ObservableField<String> twitterUrl = new ObservableField<>();
     public ObservableField<List<String>> castList = new ObservableField<>();
@@ -77,6 +78,7 @@ public class AnimeDetailViewModel {
         animeBannerUrl.set(item.imageUrlBanner);
         animeIconUrl.set(item.imageUrlMed);
         animeTitle.set(item.titleJapanese);
+        animeSeason.set(item.getSeason());
 //        officialSiteUrl.set(item.getOfficialSite());
 //        twitterUrl.set(item.getTwitterUrl());
         castList.set(item.getCasts());
