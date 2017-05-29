@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -22,9 +23,10 @@ import com.example.owner_pc.animechecker.viewmodel.AnimeListViewModel;
 import java.util.List;
 
 
-public class AnimeListActivity extends AppCompatActivity implements AnimeListViewContract {
+public class AnimeListActivity extends AppCompatActivity implements AnimeListViewContract, AnimeItemFragment.OnListFragmentInteractionListener {
 //    String accessToken;
     private AnimeAdapter animeAdapter;
+    private AnimeItemFragment animeFragment;
     private CoordinatorLayout coordinatorLayout;
     private AniListService aniListService;
 
@@ -126,12 +128,19 @@ public class AnimeListActivity extends AppCompatActivity implements AnimeListVie
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+        /*
         // Recycler View
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyler_animes);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         animeAdapter = new AnimeAdapter((Context) this, (AnimeListViewContract) this);
         recyclerView.setAdapter(animeAdapter);
+        */
+
+        animeFragment = AnimeItemFragment.newInstance(AnimeRecyclerViewAdapter.VIEWTYPE_GRID);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.coordinator_layout, animeFragment);
+        transaction.commit();
 
         // SnackBar表示で利用する
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
@@ -144,6 +153,11 @@ public class AnimeListActivity extends AppCompatActivity implements AnimeListVie
 //        languageSpinner.setAdapter(adapter);
     }
 
+    @Override
+    public void onListFragmentInteraction(AnimePage item) {
+        AnimeDetailActivity.start(this, item);
+    }
+
     // =====RepositoryListViewContract の実装=====
     // ここでPresenterから指示を受けてViewの変更などを行う
 
@@ -154,7 +168,8 @@ public class AnimeListActivity extends AppCompatActivity implements AnimeListVie
 
     @Override
     public void showAnimes(List<AnimeCard> animes) {
-        animeAdapter.setItemsAndRefresh(animes);
+        animeFragment.showAnimes(animes);
+//        animeAdapter.setItemsAndRefresh(animes);
     }
 
     @Override

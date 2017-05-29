@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.databinding.ObservableField;
 import android.view.View;
 
+import com.example.owner_pc.animechecker.contract.AnimeListFragmentContract;
 import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
+import com.example.owner_pc.animechecker.contract.AnimeSmallListFragmentContract;
 import com.example.owner_pc.animechecker.model.AniListService;
 import com.example.owner_pc.animechecker.model.entity.Anime;
 import com.example.owner_pc.animechecker.model.entity.AnimeCard;
@@ -30,11 +32,23 @@ public class AnimeItemViewModel {
     public ObservableField<String> animeImageUrl = new ObservableField<>();
     public ObservableField<String> directorName = new ObservableField<>();
     public ObservableField<String> studioName = new ObservableField<>();
+    public ObservableField<String> season = new ObservableField<>();
     AnimeListViewContract view;
+    AnimeListFragmentContract fragmentView;
+    AnimeSmallListFragmentContract fragmentSmallView;
     private AnimePage animePage;
+    private Anime anime;
 
     public AnimeItemViewModel(AnimeListViewContract view) {
         this.view = view;
+    }
+
+    public AnimeItemViewModel(AnimeListFragmentContract view) {
+        this.fragmentView = view;
+    }
+
+    public AnimeItemViewModel(AnimeSmallListFragmentContract view) {
+        this.fragmentSmallView = view;
     }
 
     public void loadItem(AnimeCard item) {
@@ -43,6 +57,16 @@ public class AnimeItemViewModel {
         animeImageUrl.set(item.animePage.imageUrlLge);
         studioName.set(item.animePage.studio.get(0).studioName);
         directorName.set(item.director.nameLastJapanese + swapName(item.director.nameFirstJapanese));
+        season.set(item.animePage.getSeason());
+    }
+    public void loadSmallItem(Anime item) {
+//        animePage = item.animePage;
+        anime = item;
+        animeName.set(item.titleJapanese);
+        animeImageUrl.set(item.imageUrlLge);
+//        studioName.set(item.animePage.studio.get(0).studioName);
+//        directorName.set(item.director.nameLastJapanese + swapName(item.director.nameFirstJapanese));
+        season.set(item.getSeason());
     }
 
 
@@ -59,7 +83,8 @@ public class AnimeItemViewModel {
     }
 
     public void onItemClick(View itemView) {
-        // todo 監督と制作会社取得の際に、フェッチしてきたAnimePageを渡す
-        view.startDetailActivity(animePage);
+        if (view != null) view.startDetailActivity(animePage);
+        if (fragmentView != null) fragmentView.itemClicked(animePage);
+        if (fragmentSmallView != null) fragmentSmallView.itemClicked(anime);
     }
 }

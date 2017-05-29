@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class StudioPage extends Studio {
-    ArrayList<Anime> anime;
+    public ArrayList<Anime> anime;
 
     @Override
     public String toString() {
