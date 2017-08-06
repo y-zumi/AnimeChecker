@@ -43,7 +43,7 @@ public class AnimePage extends Anime implements Serializable {
                 return staff.get(i);
             }
         }
-        return null;
+        return new StaffSmall();
     }
 
 

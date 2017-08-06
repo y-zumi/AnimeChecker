@@ -114,7 +114,6 @@ public class AnimeRecyclerViewAdapter extends RecyclerView.Adapter<AnimeRecycler
         return items.get(position);
     }
 
-
     @Override
     public int getItemCount() {
         if (items == null) {

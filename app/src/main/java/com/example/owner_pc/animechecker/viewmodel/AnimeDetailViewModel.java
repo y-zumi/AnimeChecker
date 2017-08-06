@@ -173,7 +173,8 @@ public class AnimeDetailViewModel {
         animeIconUrl.set(item.imageUrlMed);
         animeTitle.set(item.titleJapanese);
         animeSeason.set(item.getSeason());
-        animeDirector.set(item.getDirector().nameLast + item.getDirector().nameFirst);
+        if (item.getDirector() != null) animeDirector.set(item.getDirector().nameLast + item.getDirector().nameFirst);
+        else animeDirector.set("");
         animeStudio.set(item.studio.get(0).studioName);
 //        officialSiteUrl.set(item.getOfficialSite());
 //        twitterUrl.set(item.getTwitterUrl());

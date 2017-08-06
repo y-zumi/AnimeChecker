@@ -29,4 +29,15 @@ public class StaffSmall implements Serializable {
                 ", role='" + role + '\'' +
                 '}';
     }
+//
+    public StaffSmall() {
+        this.id = -1;
+        this.nameFirst = "";
+        this.nameLast = "";
+        this.language = "";
+        this.imageUrlLge = "";
+        this.imageUrlMed = "";
+        this.linkId = -1;
+        this.role = "";
+    }
 }

@@ -57,12 +57,5 @@ public interface AniListService {
     @GET("studio/{id}/page")
     Observable<StudioPage> listStudioAnimes(@Path("id") int id,
                                             @Query("access_token") String token);
-
-//    @GET("anime/{id}")
-//    Observable<>
-
-
-//    Observable<Repositories> listRepos(@Query("q") String query);
-
 }
 

@@ -26,7 +26,7 @@ public class AnimeDetailActivity extends AppCompatActivity implements AnimeDetai
     private AnimeItemSmallFragment directorAnimesFragment;
     private AnimeItemSmallFragment studioAnimesFragment;
     private static final String EXTRA_ANIME_PAGE = "EXTRA_ANIME_PAGE";
-    private AnimePage animePage;
+    private AnimePage animePage = new AnimePage();
 
     /**
      * DetailActivityを開始するメソッド

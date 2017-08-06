@@ -25,13 +25,4 @@
             android:visibility="@{viewModel.progressBarVisibility}"
             />
     </android.support.design.widget.CoordinatorLayout>
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="horizontal">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@{anime.titleJapanese}"/>-->
-    <!--</LinearLayout>-->
 </layout>

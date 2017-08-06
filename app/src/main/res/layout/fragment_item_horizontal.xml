@@ -10,7 +10,6 @@
             type="com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel" />
     </data>
 
-
     <android.support.constraint.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="150dp"
@@ -29,7 +28,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="1dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="0.0"
             android:layout_marginTop="1dp"
@@ -91,7 +89,7 @@
                     android:textSize="12sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/anime_name"
-                    tools:text="director"
+                    tools:text="season"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="8dp" />
             </android.support.constraint.ConstraintLayout>

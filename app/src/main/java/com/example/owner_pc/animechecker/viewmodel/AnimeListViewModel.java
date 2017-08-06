@@ -46,15 +46,9 @@ public class AnimeListViewModel {
         this.preferences = context.getSharedPreferences("access_token", Context.MODE_PRIVATE);
     }
 
-//    public void onLanguageSpinnerItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        //  スピナーの選択内容が変わったら呼ばれる
-//        loadRepositories((String) parent.getItemAtPosition(position));
-//    }
-
+    // アクセストークン取得
     public void fetchToken() {
-        // 過去一週間で作られて、言語がlanguageのものをクエリとして渡す
         Observable<Token> observable = aniListService.requestToken("client_credentials","y0zumi-ajwul","KpyrM3RTS0RAt0QIs1AmCR9Q4");
-        // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Token>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -63,13 +57,10 @@ public class AnimeListViewModel {
 
             @Override
             public void onNext(@NonNull Token token) {
+                // トークンを保存
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("token", token.accessToken);
                 editor.commit();
-                // 読み込み終了したので、プログレスバーの表示を非表示にする
-//                progressBarVisibility.set(View.GONE);
-                // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
-//                animeListView.showAnimes(token);
             }
 
             @Override
@@ -91,14 +82,9 @@ public class AnimeListViewModel {
         // 読込中なのでプログレスバーを表示する
         progressBarVisibility.set(View.VISIBLE);
 
-        // 一週間前の日付の文字列 今が2016-10-27ならば2016-10-20 などの文字列を取得する
-//        final Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.DAY_OF_MONTH, -7);
-//        String text = DateFormat.format("yyyy-MM-dd", calendar).toString();
-
         // Retrofitを利用してサーバーにアクセスする
         // 2017年春アニメ(TV版)を取得
-        Observable<List<Anime>> observable = aniListService.listAnimes("2017", "spring", "TV", preferences.getString("token", ""));
+        Observable<List<Anime>> observable = aniListService.listAnimes("2017", "summer", "TV", preferences.getString("token", ""));
         // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<List<Anime>>() {
             @Override
@@ -108,10 +94,6 @@ public class AnimeListViewModel {
 
             @Override
             public void onNext(@NonNull List<Anime> items) {
-                // 読み込み終了したので、プログレスバーの表示を非表示にする
-//                progressBarVisibility.set(View.GONE);
-                // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
-//                animeListView.showAnimes(animes);
                 // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
                 animeList = items;
                 // 各アニメの詳細情報を取得
@@ -135,7 +117,6 @@ public class AnimeListViewModel {
     // 監督と制作会社の名称は別途通信が必要である
     public void loadAnimePage(int animeId) {
         Observable<AnimePage> observable = aniListService.detailAnime(animeId,  preferences.getString("token", ""));
-        // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<AnimePage>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -144,16 +125,13 @@ public class AnimeListViewModel {
 
             @Override
             public void onNext(@NonNull AnimePage item) {
-//                animePage = item;
-//                studioName.set(animePage.studio.get(0).studioName);
-//                loadDirector(animePage.getDirector());
                 // 詳細情報から監督のidを取得し、監督の名前(日本語)を取ってくる
                 loadDirector(item.getDirector(), item);
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                animeListView.showError();
             }
 
             @Override
@@ -167,13 +145,12 @@ public class AnimeListViewModel {
     // 監督情報(日本語の名前)を取得
     public void loadDirector(StaffSmall staff, final AnimePage animePage) {
         // 監督情報がない場合アニメの情報のみ格納
-        if (staff == null) {
+            if (staff == null || staff.id == -1) {
             animeCards.add(new AnimeCard(animePage));
             checkLoadedAnimeList();
             return;
         }
         Observable<Staff> observable = aniListService.detailStaff(staff.id,  preferences.getString("token", ""));
-        // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Staff>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -189,7 +166,7 @@ public class AnimeListViewModel {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                animeListView.showError();
             }
 
             @Override
