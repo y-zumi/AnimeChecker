@@ -7,13 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.owner_pc.animechecker.model.AniListService;
-import com.example.owner_pc.animechecker.model.entity.AnimeCard;
-import com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel;
 import com.example.owner_pc.animechecker.R;
 import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
 import com.example.owner_pc.animechecker.databinding.AnimeItemBinding;
-import com.example.owner_pc.animechecker.model.entity.Anime;
+import com.example.owner_pc.animechecker.model.entity.AnimeCard;
+import com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel;
 
 import java.util.List;
 
@@ -33,6 +31,7 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHol
 
     /**
      * リポジトリのデータをセットして更新する
+     *
      * @param items
      */
     public void setItemsAndRefresh(List<AnimeCard> items) {

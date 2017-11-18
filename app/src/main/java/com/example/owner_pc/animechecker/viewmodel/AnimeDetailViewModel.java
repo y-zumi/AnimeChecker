@@ -3,18 +3,14 @@ package com.example.owner_pc.animechecker.viewmodel;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.databinding.ObservableField;
-import android.util.Log;
 import android.view.View;
 
 import com.example.owner_pc.animechecker.contract.AnimeDetailContract;
 import com.example.owner_pc.animechecker.model.AniListService;
-import com.example.owner_pc.animechecker.model.entity.Anime;
-import com.example.owner_pc.animechecker.model.entity.AnimeCard;
 import com.example.owner_pc.animechecker.model.entity.AnimePage;
 import com.example.owner_pc.animechecker.model.entity.StaffPage;
 import com.example.owner_pc.animechecker.model.entity.StudioPage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -32,18 +28,18 @@ public class AnimeDetailViewModel {
 
     final AnimeDetailContract detailView;
     private final AniListService aniListService;
+    private final SharedPreferences preferences;
     public ObservableField<String> animeBannerUrl = new ObservableField<>();
     public ObservableField<String> animeIconUrl = new ObservableField<>();
     public ObservableField<String> animeTitle = new ObservableField<>();
     public ObservableField<String> animeSeason = new ObservableField<>();
     public ObservableField<String> animeDirector = new ObservableField<>();
     public ObservableField<String> animeStudio = new ObservableField<>();
-//    public ObservableField<String> officialSiteUrl = new ObservableField<>();
+    //    public ObservableField<String> officialSiteUrl = new ObservableField<>();
 //    public ObservableField<String> twitterUrl = new ObservableField<>();
     public ObservableField<List<String>> castList = new ObservableField<>();
     public ObservableField<List<String>> staffList = new ObservableField<>();
     private AnimePage animePage;
-    private final SharedPreferences preferences;
 
     public AnimeDetailViewModel(AnimeDetailContract detailView, AniListService aniListService, Context context) {
         this.detailView = detailView;
@@ -66,7 +62,7 @@ public class AnimeDetailViewModel {
 
         // Retrofitを利用してサーバーにアクセスする
         // 監督の関連アニメを取得
-        Observable<StaffPage> observableStaff = aniListService.listDirectorAnimes(item.getDirector().id,  preferences.getString("token", ""));
+        Observable<StaffPage> observableStaff = aniListService.listDirectorAnimes(item.getDirector().id, preferences.getString("token", ""));
         // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observableStaff.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<StaffPage>() {
             @Override
@@ -101,7 +97,7 @@ public class AnimeDetailViewModel {
             }
         });
 
-        Observable<StudioPage> observableStudio = aniListService.listStudioAnimes(item.studio.get(0).id,  preferences.getString("token", ""));
+        Observable<StudioPage> observableStudio = aniListService.listStudioAnimes(item.studio.get(0).id, preferences.getString("token", ""));
         // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observableStudio.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<StudioPage>() {
             @Override
@@ -173,7 +169,8 @@ public class AnimeDetailViewModel {
         animeIconUrl.set(item.imageUrlMed);
         animeTitle.set(item.titleJapanese);
         animeSeason.set(item.getSeason());
-        if (item.getDirector() != null) animeDirector.set(item.getDirector().nameLast + item.getDirector().nameFirst);
+        if (item.getDirector() != null)
+            animeDirector.set(item.getDirector().nameLast + item.getDirector().nameFirst);
         else animeDirector.set("");
         animeStudio.set(item.studio.get(0).studioName);
 //        officialSiteUrl.set(item.getOfficialSite());

@@ -1,8 +1,6 @@
 package com.example.owner_pc.animechecker.model.entity;
 
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 

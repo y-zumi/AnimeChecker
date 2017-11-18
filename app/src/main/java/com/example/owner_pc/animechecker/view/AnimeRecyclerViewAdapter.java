@@ -1,22 +1,17 @@
 package com.example.owner_pc.animechecker.view;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.owner_pc.animechecker.R;
 import com.example.owner_pc.animechecker.contract.AnimeListFragmentContract;
-import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
-import com.example.owner_pc.animechecker.databinding.AnimeItemBinding;
 import com.example.owner_pc.animechecker.databinding.FragmentItemGridBinding;
 import com.example.owner_pc.animechecker.databinding.FragmentItemHorizontalBinding;
 import com.example.owner_pc.animechecker.model.entity.AnimeCard;
 import com.example.owner_pc.animechecker.view.AnimeItemFragment.OnListFragmentInteractionListener;
-
 import com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel;
 
 import java.util.List;
@@ -27,13 +22,12 @@ public class AnimeRecyclerViewAdapter extends RecyclerView.Adapter<AnimeRecycler
     public final static int VIEWTYPE_HORIZONTAL = 2;
 
     private final AnimeListFragmentContract view;
+    //    private final List<DummyItem> mValues;
+    private final OnListFragmentInteractionListener mListener;
     private List<AnimeCard> items;
     private int viewType;
 
-//    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
-
-//    public AnimeRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    //    public AnimeRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
     public AnimeRecyclerViewAdapter(OnListFragmentInteractionListener listener, AnimeListFragmentContract view, int viewType) {
         mListener = listener;
         this.view = view;
@@ -103,6 +97,7 @@ public class AnimeRecyclerViewAdapter extends RecyclerView.Adapter<AnimeRecycler
 
     /**
      * リポジトリのデータをセットして更新する
+     *
      * @param items
      */
     public void setItemsAndRefresh(List<AnimeCard> items) {
@@ -127,8 +122,8 @@ public class AnimeRecyclerViewAdapter extends RecyclerView.Adapter<AnimeRecycler
      * ここではViewModelを持つ
      */
     static class AnimeViewHolder extends RecyclerView.ViewHolder {
-        private final AnimeItemViewModel viewModel;
         public final View mView;
+        private final AnimeItemViewModel viewModel;
 //        public AnimeCard mItem;
 
         public AnimeViewHolder(View itemView, AnimeItemViewModel viewModel) {

@@ -16,6 +16,18 @@ public class StaffSmall implements Serializable {
     public int linkId;
     public String role;
 
+    //
+    public StaffSmall() {
+        this.id = -1;
+        this.nameFirst = "";
+        this.nameLast = "";
+        this.language = "";
+        this.imageUrlLge = "";
+        this.imageUrlMed = "";
+        this.linkId = -1;
+        this.role = "";
+    }
+
     @Override
     public String toString() {
         return "StaffSmall{" +
@@ -28,16 +40,5 @@ public class StaffSmall implements Serializable {
                 ", linkId=" + linkId +
                 ", role='" + role + '\'' +
                 '}';
-    }
-//
-    public StaffSmall() {
-        this.id = -1;
-        this.nameFirst = "";
-        this.nameLast = "";
-        this.language = "";
-        this.imageUrlLge = "";
-        this.imageUrlMed = "";
-        this.linkId = -1;
-        this.role = "";
     }
 }

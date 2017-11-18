@@ -49,10 +49,12 @@ public interface AniListService {
     @GET("staff/{id}")
     Observable<Staff> detailStaff(@Path("id") int id,
                                   @Query("access_token") String token);
+
     // 監督の関連作品
     @GET("staff/{id}/page")
     Observable<StaffPage> listDirectorAnimes(@Path("id") int id,
                                              @Query("access_token") String token);
+
     // 制作会社の関連作品
     @GET("studio/{id}/page")
     Observable<StudioPage> listStudioAnimes(@Path("id") int id,

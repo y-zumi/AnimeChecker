@@ -5,15 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.owner_pc.animechecker.R;
 import com.example.owner_pc.animechecker.contract.AnimeSmallListFragmentContract;
-import com.example.owner_pc.animechecker.databinding.FragmentItemGridBinding;
 import com.example.owner_pc.animechecker.databinding.FragmentItemHorizontal1Binding;
-import com.example.owner_pc.animechecker.databinding.FragmentItemHorizontalBinding;
 import com.example.owner_pc.animechecker.model.entity.Anime;
-import com.example.owner_pc.animechecker.model.entity.AnimeCard;
 import com.example.owner_pc.animechecker.view.AnimeItemSmallFragment.OnListFragmentInteractionListener;
 import com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel;
 
@@ -21,9 +17,9 @@ import java.util.List;
 
 public class AnimeSmallRecyclerViewAdapter extends RecyclerView.Adapter<AnimeSmallRecyclerViewAdapter.AnimeSmallViewHolder> {
 
-    private List<Anime> items;
     private final AnimeSmallListFragmentContract view;
     private final OnListFragmentInteractionListener mListener;
+    private List<Anime> items;
 
     public AnimeSmallRecyclerViewAdapter(OnListFragmentInteractionListener listener, AnimeSmallListFragmentContract view) {
         mListener = listener;
@@ -37,7 +33,7 @@ public class AnimeSmallRecyclerViewAdapter extends RecyclerView.Adapter<AnimeSma
         return new AnimeSmallViewHolder(bindingHorizontal.getRoot(), bindingHorizontal.getViewModel());
     }
 
-//    @Override
+    //    @Override
 //    public AnimeSmallViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        View view = LayoutInflater.from(parent.getContext())
 //                .inflate(R.layout.fragment_item_small, parent, false);
@@ -51,6 +47,7 @@ public class AnimeSmallRecyclerViewAdapter extends RecyclerView.Adapter<AnimeSma
 
     /**
      * リポジトリのデータをセットして更新する
+     *
      * @param items
      */
     public void setItemsAndRefresh(List<Anime> items) {
@@ -76,8 +73,8 @@ public class AnimeSmallRecyclerViewAdapter extends RecyclerView.Adapter<AnimeSma
      * ここではViewModelを持つ
      */
     static class AnimeSmallViewHolder extends RecyclerView.ViewHolder {
-        private final AnimeItemViewModel viewModel;
         public final View mView;
+        private final AnimeItemViewModel viewModel;
 //        public AnimeCard mItem;
 
         public AnimeSmallViewHolder(View itemView, AnimeItemViewModel viewModel) {

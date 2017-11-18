@@ -18,6 +18,18 @@ public class Staff implements Serializable {
     public String imageUrlLge;
     public String imageUrlMed;
 
+    public Staff() {
+        this.id = -1;
+        this.nameFirst = "";
+        this.nameLast = "";
+        this.nameFirstJapanese = "";
+        this.nameLastJapanese = "";
+        this.info = "";
+        this.language = "";
+        this.imageUrlLge = "";
+        this.imageUrlMed = "";
+    }
+
     @Override
     public String toString() {
         return "Staff{" +
@@ -31,17 +43,5 @@ public class Staff implements Serializable {
                 ", imageUrlLge='" + imageUrlLge + '\'' +
                 ", imageUrlMed='" + imageUrlMed + '\'' +
                 '}';
-    }
-
-    public Staff() {
-        this.id = -1;
-        this.nameFirst = "";
-        this.nameLast = "";
-        this.nameFirstJapanese = "";
-        this.nameLastJapanese = "";
-        this.info = "";
-        this.language = "";
-        this.imageUrlLge = "";
-        this.imageUrlMed = "";
     }
 }

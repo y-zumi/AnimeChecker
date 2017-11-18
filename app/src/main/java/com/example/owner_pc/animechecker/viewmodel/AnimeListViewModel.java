@@ -48,7 +48,7 @@ public class AnimeListViewModel {
 
     // アクセストークン取得
     public void fetchToken() {
-        Observable<Token> observable = aniListService.requestToken("client_credentials","y0zumi-ajwul","KpyrM3RTS0RAt0QIs1AmCR9Q4");
+        Observable<Token> observable = aniListService.requestToken("client_credentials", "y0zumi-ajwul", "KpyrM3RTS0RAt0QIs1AmCR9Q4");
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Token>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -75,6 +75,7 @@ public class AnimeListViewModel {
             }
         });
     }
+
     /**
      * 過去一週間で作られたライブラリのスター数順で取得
      */
@@ -116,7 +117,7 @@ public class AnimeListViewModel {
 
     // 監督と制作会社の名称は別途通信が必要である
     public void loadAnimePage(int animeId) {
-        Observable<AnimePage> observable = aniListService.detailAnime(animeId,  preferences.getString("token", ""));
+        Observable<AnimePage> observable = aniListService.detailAnime(animeId, preferences.getString("token", ""));
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<AnimePage>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -145,12 +146,12 @@ public class AnimeListViewModel {
     // 監督情報(日本語の名前)を取得
     public void loadDirector(StaffSmall staff, final AnimePage animePage) {
         // 監督情報がない場合アニメの情報のみ格納
-            if (staff == null || staff.id == -1) {
+        if (staff == null || staff.id == -1) {
             animeCards.add(new AnimeCard(animePage));
             checkLoadedAnimeList();
             return;
         }
-        Observable<Staff> observable = aniListService.detailStaff(staff.id,  preferences.getString("token", ""));
+        Observable<Staff> observable = aniListService.detailStaff(staff.id, preferences.getString("token", ""));
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Staff>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {

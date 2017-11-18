@@ -1,27 +1,14 @@
 package com.example.owner_pc.animechecker.viewmodel;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.databinding.ObservableField;
 import android.view.View;
 
 import com.example.owner_pc.animechecker.contract.AnimeListFragmentContract;
 import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
 import com.example.owner_pc.animechecker.contract.AnimeSmallListFragmentContract;
-import com.example.owner_pc.animechecker.model.AniListService;
 import com.example.owner_pc.animechecker.model.entity.Anime;
 import com.example.owner_pc.animechecker.model.entity.AnimeCard;
 import com.example.owner_pc.animechecker.model.entity.AnimePage;
-import com.example.owner_pc.animechecker.model.entity.Staff;
-import com.example.owner_pc.animechecker.model.entity.StaffSmall;
-import com.example.owner_pc.animechecker.model.entity.Studio;
-
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by owner-PC on 2017/05/22.
@@ -59,6 +46,7 @@ public class AnimeItemViewModel {
         directorName.set(item.director.nameLastJapanese + swapName(item.director.nameFirstJapanese));
         season.set(item.animePage.getSeason());
     }
+
     public void loadSmallItem(Anime item) {
 //        animePage = item.animePage;
         anime = item;

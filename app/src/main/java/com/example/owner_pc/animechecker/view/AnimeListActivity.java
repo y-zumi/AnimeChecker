@@ -1,21 +1,16 @@
 package com.example.owner_pc.animechecker.view;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.example.owner_pc.animechecker.R;
 import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
 import com.example.owner_pc.animechecker.databinding.ActivityAnimeListBinding;
 import com.example.owner_pc.animechecker.model.AniListService;
-import com.example.owner_pc.animechecker.model.entity.Anime;
 import com.example.owner_pc.animechecker.model.entity.AnimeCard;
 import com.example.owner_pc.animechecker.model.entity.AnimePage;
 import com.example.owner_pc.animechecker.viewmodel.AnimeListViewModel;
@@ -38,6 +33,7 @@ public class AnimeListActivity extends AppCompatActivity implements AnimeListVie
         setupViews();
         viewModel.fetchToken();
     }
+
     /**
      * リストなどの画面の要素を作る
      */

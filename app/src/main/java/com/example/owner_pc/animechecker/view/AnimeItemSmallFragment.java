@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.owner_pc.animechecker.R;
 import com.example.owner_pc.animechecker.contract.AnimeSmallListFragmentContract;
 import com.example.owner_pc.animechecker.model.entity.Anime;
+
 import java.util.List;
 
 /**

@@ -1,8 +1,5 @@
 package com.example.owner_pc.animechecker.model.entity;
 
-import com.example.owner_pc.animechecker.model.entity.Anime;
-import com.example.owner_pc.animechecker.model.entity.Staff;
-
 import java.util.ArrayList;
 
 /**

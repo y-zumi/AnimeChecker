@@ -1,7 +1,6 @@
 package com.example.owner_pc.animechecker.contract;
 
 import com.example.owner_pc.animechecker.model.entity.Anime;
-import com.example.owner_pc.animechecker.model.entity.AnimeCard;
 import com.example.owner_pc.animechecker.model.entity.AnimePage;
 
 import java.util.List;
