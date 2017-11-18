@@ -1,12 +1,13 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by owner-PC on 2017/05/21.
  */
 
-public class Studio {
+public class Studio implements Serializable {
     public int id;
     public String studioName;
     public String studioWiki;

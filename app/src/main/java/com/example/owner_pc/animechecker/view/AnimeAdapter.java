@@ -1,4 +1,4 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.view;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -7,7 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.owner_pc.animechecker.model.AniListService;
+import com.example.owner_pc.animechecker.model.entity.AnimeCard;
+import com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel;
+import com.example.owner_pc.animechecker.R;
+import com.example.owner_pc.animechecker.contract.AnimeListViewContract;
 import com.example.owner_pc.animechecker.databinding.AnimeItemBinding;
+import com.example.owner_pc.animechecker.model.entity.Anime;
 
 import java.util.List;
 
@@ -15,11 +21,10 @@ import java.util.List;
  * Created by owner-PC on 2017/05/22.
  */
 
-
 public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder> {
     private final AnimeListViewContract view;
     private final Context context;
-    private List<Anime> items;
+    private List<AnimeCard> items;
 
     public AnimeAdapter(Context context, AnimeListViewContract view) {
         this.context = context;
@@ -30,12 +35,12 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHol
      * リポジトリのデータをセットして更新する
      * @param items
      */
-    public void setItemsAndRefresh(List<Anime> items) {
+    public void setItemsAndRefresh(List<AnimeCard> items) {
         this.items = items;
         notifyDataSetChanged();
     }
 
-    public Anime getItemAt(int position) {
+    public AnimeCard getItemAt(int position) {
         return items.get(position);
     }
 
@@ -55,7 +60,7 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHol
      */
     @Override
     public void onBindViewHolder(final AnimeViewHolder holder, final int position) {
-        final Anime item = getItemAt(position);
+        final AnimeCard item = getItemAt(position);
         holder.loadItem(item);
 
     }
@@ -80,7 +85,7 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.AnimeViewHol
             this.viewModel = viewModel;
         }
 
-        public void loadItem(Anime item) {
+        public void loadItem(AnimeCard item) {
             viewModel.loadItem(item);
         }
     }
