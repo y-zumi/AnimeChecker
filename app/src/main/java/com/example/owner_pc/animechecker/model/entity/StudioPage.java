@@ -1,4 +1,4 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.model.entity;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class StudioPage extends Studio {
-    ArrayList<Anime> anime;
+    public ArrayList<Anime> anime;
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.model.entity;
 
 /**
  * Created by owner-PC on 2017/05/15.

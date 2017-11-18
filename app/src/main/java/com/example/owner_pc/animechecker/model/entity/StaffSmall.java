@@ -1,10 +1,12 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.model.entity;
+
+import java.io.Serializable;
 
 /**
  * Created by owner-PC on 2017/05/20.
  */
 
-public class StaffSmall {
+public class StaffSmall implements Serializable {
     public int id;
     public String nameFirst;
     public String nameLast;
@@ -26,5 +28,16 @@ public class StaffSmall {
                 ", linkId=" + linkId +
                 ", role='" + role + '\'' +
                 '}';
+    }
+//
+    public StaffSmall() {
+        this.id = -1;
+        this.nameFirst = "";
+        this.nameLast = "";
+        this.language = "";
+        this.imageUrlLge = "";
+        this.imageUrlMed = "";
+        this.linkId = -1;
+        this.role = "";
     }
 }

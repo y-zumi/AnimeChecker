@@ -12,45 +12,43 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:foreground="?selectableItemBackground"
             android:onClick="@{viewModel::onItemClick}"
             android:orientation="vertical"
+            app:cardElevation="0dp"
             app:cardUseCompatPadding="true"
-            tools:showIn="@layout/activity_anime_list"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="1dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="0dp"
+            tools:showIn="@layout/activity_anime_list">
 
             <android.support.constraint.ConstraintLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="116dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/anime_image"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    bind:imageUrl="@{viewModel.animeImageUrl}"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:imageUrl="@{viewModel.animeImageUrl}" />
                     <!--android:src="@mipmap/ic_launcher"-->
                 <!--android:layout_margin="8dp"-->
 
@@ -68,47 +66,31 @@
                     android:maxLines="1"
                     android:text="@{viewModel.animeName}"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/anime_image"
                     tools:text="title" />
-                    <!--android:textAppearance="@android:style/TextAppearance.Medium"-->
+                <!--android:textAppearance="@android:style/TextAppearance.Medium"-->
                 <!--android:layout_marginBottom="4dp"-->
                 <!--android:layout_marginRight="8dp"-->
                 <!--android:layout_marginTop="8dp"-->
 
                 <TextView
-                    android:id="@+id/anime_studio"
+                    android:id="@+id/anime_season"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_toEndOf="@+id/anime_name"
-                    android:text="@{viewModel.studioName}"
-                    android:textSize="14sp"
+                    android:layout_marginTop="4dp"
+                    android:text="@{viewModel.season}"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/anime_director"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:text="studio" />
-
-                <TextView
-                    android:id="@+id/anime_director"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_toEndOf="@+id/anime_studio"
-                    android:text="@{viewModel.directorName}"
-                    android:textSize="14sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/anime_name"
-                    tools:text="director" />
+                    tools:text="season"
+                    app:layout_constraintVertical_bias="1.0" />
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 

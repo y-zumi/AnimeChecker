@@ -1,10 +1,12 @@
-package com.example.owner_pc.animechecker;
+package com.example.owner_pc.animechecker.model.entity;
+
+import java.io.Serializable;
 
 /**
  * Created by owner-PC on 2017/05/20.
  */
 
-public class Character {
+public class Character implements Serializable {
     public int id;
     public String nameFirst;
     public String nameLast;
