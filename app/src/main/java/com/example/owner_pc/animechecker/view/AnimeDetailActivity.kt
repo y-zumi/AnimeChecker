@@ -6,13 +6,10 @@ import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-
 import com.example.owner_pc.animechecker.R
 import com.example.owner_pc.animechecker.contract.AnimeDetailContract
 import com.example.owner_pc.animechecker.databinding.ActivityAnimeDetailBinding
-import com.example.owner_pc.animechecker.model.AniListService
 import com.example.owner_pc.animechecker.model.entity.Anime
 import com.example.owner_pc.animechecker.model.entity.AnimePage
 import com.example.owner_pc.animechecker.viewmodel.AnimeDetailViewModel

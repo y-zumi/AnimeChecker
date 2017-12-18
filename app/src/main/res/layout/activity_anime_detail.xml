@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.owner_pc.animechecker.viewmodel.AnimeDetailViewModel"/>
+            type="com.example.owner_pc.animechecker.viewmodel.AnimeDetailViewModel" />
     </data>
 
 
@@ -78,8 +78,10 @@
                                 android:id="@+id/anime_title"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginRight="16dp"
+                                android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:text="@{viewModel.animeTitle}"
                                 android:textColor="@android:color/black"
@@ -88,9 +90,7 @@
                                 app:layout_constraintLeft_toRightOf="@+id/anime_image"
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                tools:text="title"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginEnd="16dp" />
+                                tools:text="title" />
 
                             <TextView
                                 android:id="@+id/anime_season"
@@ -156,8 +156,10 @@
                             android:id="@+id/cast_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginTop="11dp"
                             android:text="Cast"
                             android:textAllCaps="true"
@@ -165,9 +167,7 @@
                             android:textSize="18sp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/grid1"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp" />
+                            app:layout_constraintTop_toBottomOf="@+id/grid1" />
 
 
                         <TableLayout
@@ -175,14 +175,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cast_text"
+                            android:layout_marginEnd="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginTop="7dp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/cast_text"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp">
+                            app:layout_constraintTop_toBottomOf="@+id/cast_text">
 
                             <TableRow>
 
@@ -243,8 +243,10 @@
                             android:id="@+id/staff_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginTop="11dp"
                             android:text="Staff"
                             android:textAllCaps="true"
@@ -252,9 +254,7 @@
                             android:textSize="18sp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/grid2"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp" />
+                            app:layout_constraintTop_toBottomOf="@+id/grid2" />
 
                         <TableLayout
                             android:id="@+id/staff_table"
@@ -262,16 +262,16 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/staff_text"
                             android:layout_marginBottom="16dp"
+                            android:layout_marginEnd="16dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginTop="7dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/staff_text"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp">
+                            app:layout_constraintTop_toBottomOf="@+id/staff_text">
 
                             <TableRow>
 
@@ -323,17 +323,17 @@
                     android:id="@+id/director_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     app:cardElevation="1.5dp"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_card"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp">
+                    app:layout_constraintTop_toBottomOf="@+id/detail_card">
 
 
                     <android.support.constraint.ConstraintLayout
@@ -344,27 +344,26 @@
                             android:id="@+id/director_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:text='@{"関連作品(監督:"+viewModel.animeDirector+")"}'
                             android:textSize="16sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginStart="16dp" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <android.support.constraint.ConstraintLayout
                             android:id="@+id/director_animes"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
-                            app:layout_constraintRight_toRightOf="parent"
+                            android:layout_marginBottom="8dp"
                             android:layout_marginLeft="8dp"
-                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:layout_marginRight="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/director_text"
-                            android:layout_marginBottom="8dp">
-                        </android.support.constraint.ConstraintLayout>
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/director_text"></android.support.constraint.ConstraintLayout>
 
                     </android.support.constraint.ConstraintLayout>
                 </android.support.v7.widget.CardView>
@@ -374,8 +373,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     app:cardElevation="1.5dp"
@@ -384,9 +385,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/director_card"
-                    app:layout_constraintVertical_bias="0.0"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp">
+                    app:layout_constraintVertical_bias="0.0">
 
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="match_parent"
@@ -396,29 +395,28 @@
                             android:id="@+id/studio_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:text='@{"関連作品(制作会社:"+viewModel.animeStudio+")"}'
                             android:textSize="16sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginStart="16dp" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <android.support.constraint.ConstraintLayout
                             android:id="@+id/studio_animes"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
-                            app:layout_constraintRight_toRightOf="parent"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginLeft="8dp"
-                            app:layout_constraintLeft_toLeftOf="parent"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/studio_text"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp">
-                        </android.support.constraint.ConstraintLayout>
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/studio_text"></android.support.constraint.ConstraintLayout>
 
                     </android.support.constraint.ConstraintLayout>
                 </android.support.v7.widget.CardView>

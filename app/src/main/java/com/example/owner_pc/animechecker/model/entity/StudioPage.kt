@@ -1,6 +1,6 @@
 package com.example.owner_pc.animechecker.model.entity
 
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by owner-PC on 2017/05/21.

@@ -4,26 +4,15 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.databinding.ObservableInt
 import android.view.View
-
 import com.example.owner_pc.animechecker.contract.AnimeListViewContract
 import com.example.owner_pc.animechecker.model.AniListService
-import com.example.owner_pc.animechecker.model.entity.Anime
-import com.example.owner_pc.animechecker.model.entity.AnimeCard
-import com.example.owner_pc.animechecker.model.entity.AnimePage
-import com.example.owner_pc.animechecker.model.entity.Staff
-import com.example.owner_pc.animechecker.model.entity.StaffSmall
-import com.example.owner_pc.animechecker.model.entity.Token
-
-import java.util.ArrayList
-import java.util.Collections
-import java.util.Comparator
-
-import io.reactivex.Observable
+import com.example.owner_pc.animechecker.model.entity.*
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 
 /**
  * Created by owner-PC on 2017/05/22.

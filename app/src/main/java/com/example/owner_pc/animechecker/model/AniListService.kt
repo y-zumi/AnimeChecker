@@ -1,13 +1,6 @@
 package com.example.owner_pc.animechecker.model
 
-import com.example.owner_pc.animechecker.model.entity.Anime
-import com.example.owner_pc.animechecker.model.entity.AnimePage
-import com.example.owner_pc.animechecker.model.entity.Character
-import com.example.owner_pc.animechecker.model.entity.Staff
-import com.example.owner_pc.animechecker.model.entity.StaffPage
-import com.example.owner_pc.animechecker.model.entity.StudioPage
-import com.example.owner_pc.animechecker.model.entity.Token
-
+import com.example.owner_pc.animechecker.model.entity.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.POST

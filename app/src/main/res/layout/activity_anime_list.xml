@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.owner_pc.animechecker.viewmodel.AnimeListViewModel"/>
+            type="com.example.owner_pc.animechecker.viewmodel.AnimeListViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -22,7 +23,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="@{viewModel.progressBarVisibility}"
-            />
+            android:visibility="@{viewModel.progressBarVisibility}" />
     </android.support.design.widget.CoordinatorLayout>
 </layout>

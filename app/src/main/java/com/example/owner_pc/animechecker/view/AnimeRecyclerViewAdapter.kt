@@ -14,9 +14,7 @@ import com.example.owner_pc.animechecker.model.entity.AnimeCard
 import com.example.owner_pc.animechecker.view.AnimeItemFragment.OnListFragmentInteractionListener
 import com.example.owner_pc.animechecker.viewmodel.AnimeItemViewModel
 
-class AnimeRecyclerViewAdapter//    public AnimeRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-(//    private final List<DummyItem> mValues;
-        private val mListener: OnListFragmentInteractionListener, private val view: AnimeListFragmentContract, private val viewType: Int) : RecyclerView.Adapter<AnimeRecyclerViewAdapter.AnimeViewHolder>() {
+class AnimeRecyclerViewAdapter(private val mListener: OnListFragmentInteractionListener, private val view: AnimeListFragmentContract, private val viewType: Int) : RecyclerView.Adapter<AnimeRecyclerViewAdapter.AnimeViewHolder>() {
     private var items: List<AnimeCard>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
@@ -107,10 +105,7 @@ class AnimeRecyclerViewAdapter//    public AnimeRecyclerViewAdapter(List<DummyIt
      * Viewを保持しておくクラス
      * ここではViewModelを持つ
      */
-    class AnimeViewHolder
-    //        public AnimeCard mItem;
-
-    (val mView: View, private val viewModel: AnimeItemViewModel) : RecyclerView.ViewHolder(mView) {
+    class AnimeViewHolder(val mView: View, private val viewModel: AnimeItemViewModel) : RecyclerView.ViewHolder(mView) {
 
         fun loadItem(item: AnimeCard) {
             viewModel.loadItem(item)

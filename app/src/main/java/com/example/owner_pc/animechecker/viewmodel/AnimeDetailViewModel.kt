@@ -4,14 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.databinding.ObservableField
 import android.view.View
-
 import com.example.owner_pc.animechecker.contract.AnimeDetailContract
 import com.example.owner_pc.animechecker.model.AniListService
 import com.example.owner_pc.animechecker.model.entity.AnimePage
 import com.example.owner_pc.animechecker.model.entity.StaffPage
 import com.example.owner_pc.animechecker.model.entity.StudioPage
-
-import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
