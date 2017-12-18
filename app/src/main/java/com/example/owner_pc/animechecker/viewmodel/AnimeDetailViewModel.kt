@@ -82,6 +82,7 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
             override fun onComplete() {}
         })
 
+        //FIXME 非null表明を使用しない
         val observableStudio = aniListService.listStudioAnimes(item.studio!![0].id, preferences.getString("token", ""))
         // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observableStudio.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<StudioPage> {
@@ -153,8 +154,12 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
             animeDirector.set(item.director.nameLast + item.director.nameFirst)
         else
             animeDirector.set("")
-        animeStudio.set(item.studio!![0].studioName)
-        //        officialSiteUrl.set(item.getOfficialSite());
+        val studio = item.studio.orEmpty()
+        if (studio.isNotEmpty()) {
+            animeStudio.set(studio[0].studioName)
+        } else {
+            animeStudio.set("")
+        }        //        officialSiteUrl.set(item.getOfficialSite());
         //        twitterUrl.set(item.getTwitterUrl());
         castList.set(item.casts)
         staffList.set(item.staffs)

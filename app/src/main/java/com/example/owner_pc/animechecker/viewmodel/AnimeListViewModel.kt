@@ -63,7 +63,7 @@ class AnimeListViewModel(private val animeListView: AnimeListViewContract, priva
 
         // Retrofitを利用してサーバーにアクセスする
         // 2017年春アニメ(TV版)を取得
-        val observable = aniListService.listAnimes("2017", "summer", "TV", preferences.getString("token", ""))
+        val observable = aniListService.listAnimes("2018", "winter", "TV", preferences.getString("token", ""))
         // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<List<Anime>> {
             override fun onSubscribe(@NonNull d: Disposable) {
