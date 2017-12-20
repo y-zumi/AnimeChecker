@@ -52,70 +52,75 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
 
         // Retrofitを利用してサーバーにアクセスする
         // 監督の関連アニメを取得
-        val observableStaff = aniListService.listDirectorAnimes(item.director.id, preferences.getString("token", ""))
-        // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
-        observableStaff.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<StaffPage> {
-            override fun onSubscribe(@NonNull d: Disposable) {
+        if (item.director.id != -1) {
+            val observableStaff = aniListService.listDirectorAnimes(item.director.id, preferences.getString("token", ""))
+            // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
+            observableStaff.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<StaffPage> {
+                override fun onSubscribe(@NonNull d: Disposable) {
 
-            }
+                }
 
-            override fun onNext(@NonNull item: StaffPage) {
-                // 読み込み終了したので、プログレスバーの表示を非表示にする
-                //                progressBarVisibility.set(View.GONE);
-                // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
-                //                animeListView.showAnimes(animes);
-                // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
-                //                animeList = items;
-                //// TODO: 2017/05/29 List<Anime>のまま渡せるようにする
-                //                List<AnimeCard> animes = new ArrayList<AnimeCard>();
-                //                // 各アニメの詳細情報を取得
-                //                for (int i = 0; i < item.animeStaff.size(); i++) {
-                //                    animes.add(new AnimeCard(item.animeStaff.get(i)));
-                //                }
-                detailView.showDirectorAnimes(item.animeStaff!!)
-            }
+                override fun onNext(@NonNull item: StaffPage) {
+                    // 読み込み終了したので、プログレスバーの表示を非表示にする
+                    //                progressBarVisibility.set(View.GONE);
+                    // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
+                    //                animeListView.showAnimes(animes);
+                    // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
+                    //                animeList = items;
+                    //// TODO: 2017/05/29 List<Anime>のまま渡せるようにする
+                    //                List<AnimeCard> animes = new ArrayList<AnimeCard>();
+                    //                // 各アニメの詳細情報を取得
+                    //                for (int i = 0; i < item.animeStaff.size(); i++) {
+                    //                    animes.add(new AnimeCard(item.animeStaff.get(i)));
+                    //                }
+                    detailView.showDirectorAnimes(item.animeStaff!!)
+                }
 
-            override fun onError(@NonNull e: Throwable) {
-                detailView.showError("監督の関連作品を読み込めませんでした")
-            }
+                override fun onError(@NonNull e: Throwable) {
+                    detailView.showError("監督の関連作品を読み込めませんでした")
+                }
 
-            override fun onComplete() {}
-        })
+                override fun onComplete() {}
+            })
+        }
 
         //FIXME 非null表明を使用しない
-        val observableStudio = aniListService.listStudioAnimes(item.studio!![0].id, preferences.getString("token", ""))
-        // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
-        observableStudio.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<StudioPage> {
-            override fun onSubscribe(@NonNull d: Disposable) {
+        val studio = item.studio.orEmpty()
+        if (studio.isNotEmpty()) {
+            val observableStudio = aniListService.listStudioAnimes(studio[0].id, preferences.getString("token", ""))
+            // 入出力(IO)用のスレッドで通信を行い、メインスレッドで結果を受け取るようにする
+            observableStudio.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<StudioPage> {
+                override fun onSubscribe(@NonNull d: Disposable) {
 
-            }
+                }
 
-            override fun onNext(@NonNull item: StudioPage) {
-                // 読み込み終了したので、プログレスバーの表示を非表示にする
-                //                progressBarVisibility.set(View.GONE);
-                // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
-                //                animeListView.showAnimes(animes);
-                // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
-                //                animeList = items;
-                // 各アニメの詳細情報を取得
-                //                for (int i = 0; i < items.size(); i++) {
-                //                    loadAnimePage(items.get(i).id);
-                //                }
-                //// TODO: 2017/05/29 List<Anime>のまま渡せるようにする
-                //                List<AnimeCard> animes = new ArrayList<AnimeCard>();
-                //                // 各アニメの詳細情報を取得
-                //                for (int i = 0; i < item.anime.size(); i++) {
-                //                    animes.add(new AnimeCard(item.anime.get(i)));
-                //                }
-                detailView.showStudioAnimes(item.anime!!)
-            }
+                override fun onNext(@NonNull item: StudioPage) {
+                    // 読み込み終了したので、プログレスバーの表示を非表示にする
+                    //                progressBarVisibility.set(View.GONE);
+                    // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
+                    //                animeListView.showAnimes(animes);
+                    // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
+                    //                animeList = items;
+                    // 各アニメの詳細情報を取得
+                    //                for (int i = 0; i < items.size(); i++) {
+                    //                    loadAnimePage(items.get(i).id);
+                    //                }
+                    //// TODO: 2017/05/29 List<Anime>のまま渡せるようにする
+                    //                List<AnimeCard> animes = new ArrayList<AnimeCard>();
+                    //                // 各アニメの詳細情報を取得
+                    //                for (int i = 0; i < item.anime.size(); i++) {
+                    //                    animes.add(new AnimeCard(item.anime.get(i)));
+                    //                }
+                    detailView.showStudioAnimes(item.anime!!)
+                }
 
-            override fun onError(@NonNull e: Throwable) {
-                detailView.showError("制作会社の関連作品を読み込めませんでした")
-            }
+                override fun onError(@NonNull e: Throwable) {
+                    detailView.showError("制作会社の関連作品を読み込めませんでした")
+                }
 
-            override fun onComplete() {}
-        })
+                override fun onComplete() {}
+            })
+        }
 
         // リポジトリの名前を/で分割する
         //        final String[] repoData = fullRepoName.split("/");
@@ -168,7 +173,7 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
 
     fun onOfficialSiteClick(v: View) {
         try {
-            detailView.startBrowser(animePage!!.officialSite!!)
+            detailView.startBrowser(animePage?.officialSite ?: "")
         } catch (e: Exception) {
             detailView.showError("リンクを開けませんでした。")
         }
@@ -177,7 +182,7 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
 
     fun onTwitterClick(v: View) {
         try {
-            detailView.startBrowser(animePage!!.twitterUrl!!)
+            detailView.startBrowser(animePage?.twitterUrl ?: "")
         } catch (e: Exception) {
             detailView.showError("リンクを開けませんでした。")
         }
