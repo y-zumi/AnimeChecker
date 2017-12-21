@@ -38,11 +38,6 @@ class AnimeRecyclerViewAdapter(private val mListener: OnListFragmentInteractionL
         return AnimeViewHolder(binding.root, bindingViewModel)
     }
 
-    //    @Override
-    //    public int getItemViewType(int position) {
-    //        return super.getItemViewType(position);
-    //    }
-
     /**
      * onCreateViewHolderで作ったViewHolderのViewに
      * setItemsAndRefresh(items)でセットされたデータを入れる
@@ -51,35 +46,7 @@ class AnimeRecyclerViewAdapter(private val mListener: OnListFragmentInteractionL
         val item = getItemAt(position)
         holder.loadItem(item)
 
-        //        holder.mView.setOnClickListener(new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View v) {
-        //                if (null != mListener) {
-        //                    // Notify the active callbacks interface (the activity, if the
-        //                    // fragment is attached to one) that an item has been selected.
-        //                    mListener.onListFragmentInteraction(item);
-        //                }
-        //            }
-        //        });
     }
-
-    //    @Override
-    //    public void onBindViewHolder(final ViewHolder holder, int position) {
-    //        holder.mItem = mValues.get(position);
-    //        holder.mIdView.setText(mValues.get(position).id);
-    //        holder.mContentView.setText(mValues.get(position).content);
-    //
-    //        holder.mView.setOnClickListener(new View.OnClickListener() {
-    //            @Override
-    //            public void onClick(View v) {
-    //                if (null != mListener) {
-    //                    // Notify the active callbacks interface (the activity, if the
-    //                    // fragment is attached to one) that an item has been selected.
-    //                    mListener.onListFragmentInteraction(holder.mItem);
-    //                }
-    //            }
-    //        });
-    //    }
 
     /**
      * リポジトリのデータをセットして更新する
@@ -96,9 +63,7 @@ class AnimeRecyclerViewAdapter(private val mListener: OnListFragmentInteractionL
     }
 
     override fun getItemCount(): Int {
-        return if (items == null) {
-            0
-        } else items!!.size
+        return items?.size ?: 0
     }
 
     /**
@@ -106,34 +71,13 @@ class AnimeRecyclerViewAdapter(private val mListener: OnListFragmentInteractionL
      * ここではViewModelを持つ
      */
     class AnimeViewHolder(val mView: View, private val viewModel: AnimeItemViewModel) : RecyclerView.ViewHolder(mView) {
-
         fun loadItem(item: AnimeCard) {
             viewModel.loadItem(item)
         }
     }
 
     companion object {
-
         val VIEWTYPE_GRID = 1
         val VIEWTYPE_HORIZONTAL = 2
     }
-
-    //    public class ViewHolder extends RecyclerView.ViewHolder {
-    //        public final View mView;
-    //        public final TextView mIdView;
-    //        public final TextView mContentView;
-    //        public DummyItem mItem;
-    //
-    //        public ViewHolder(View view) {
-    //            super(view);
-    //            mView = view;
-    //            mIdView = (TextView) view.findViewById(R.id.id);
-    //            mContentView = (TextView) view.findViewById(R.id.content);
-    //        }
-    //
-    //        @Override
-    //        public String toString() {
-    //            return super.toString() + " '" + mContentView.getText() + "'";
-    //        }
-    //    }
 }
