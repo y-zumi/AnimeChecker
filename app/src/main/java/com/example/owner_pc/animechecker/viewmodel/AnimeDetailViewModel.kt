@@ -27,8 +27,6 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
     var animeSeason = ObservableField<String>()
     var animeDirector = ObservableField<String>()
     var animeStudio = ObservableField<String>()
-    //    public ObservableField<String> officialSiteUrl = new ObservableField<>();
-    //    public ObservableField<String> twitterUrl = new ObservableField<>();
     var castList = ObservableField<List<String>>()
     var staffList = ObservableField<List<String>>()
     private var animePage: AnimePage? = null
@@ -61,18 +59,7 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
                 }
 
                 override fun onNext(@NonNull item: StaffPage) {
-                    // 読み込み終了したので、プログレスバーの表示を非表示にする
-                    //                progressBarVisibility.set(View.GONE);
-                    // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
-                    //                animeListView.showAnimes(animes);
-                    // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
-                    //                animeList = items;
-                    //// TODO: 2017/05/29 List<Anime>のまま渡せるようにする
-                    //                List<AnimeCard> animes = new ArrayList<AnimeCard>();
-                    //                // 各アニメの詳細情報を取得
-                    //                for (int i = 0; i < item.animeStaff.size(); i++) {
-                    //                    animes.add(new AnimeCard(item.animeStaff.get(i)));
-                    //                }
+                    // TODO: 2017/05/29 List<Anime>のまま渡せるようにする
                     detailView.showDirectorAnimes(item.animeStaff!!)
                 }
 
@@ -95,22 +82,6 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
                 }
 
                 override fun onNext(@NonNull item: StudioPage) {
-                    // 読み込み終了したので、プログレスバーの表示を非表示にする
-                    //                progressBarVisibility.set(View.GONE);
-                    // 取得したアイテムを表示するために、RecyclerViewにアイテムをセットして更新する
-                    //                animeListView.showAnimes(animes);
-                    // 今期のアニメリストを格納する(監督情報を格納したアニメリストとの数を一致させるため)
-                    //                animeList = items;
-                    // 各アニメの詳細情報を取得
-                    //                for (int i = 0; i < items.size(); i++) {
-                    //                    loadAnimePage(items.get(i).id);
-                    //                }
-                    //// TODO: 2017/05/29 List<Anime>のまま渡せるようにする
-                    //                List<AnimeCard> animes = new ArrayList<AnimeCard>();
-                    //                // 各アニメの詳細情報を取得
-                    //                for (int i = 0; i < item.anime.size(); i++) {
-                    //                    animes.add(new AnimeCard(item.anime.get(i)));
-                    //                }
                     detailView.showStudioAnimes(item.anime!!)
                 }
 
@@ -121,31 +92,6 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
                 override fun onComplete() {}
             })
         }
-
-        // リポジトリの名前を/で分割する
-        //        final String[] repoData = fullRepoName.split("/");
-        //        final String owner = repoData[0];
-        //        final String repoName = repoData[1];
-        //        aniListService
-        //                .detailRepo(owner, repoName)
-        //                .subscribeOn(Schedulers.io())
-        //                .observeOn(AndroidSchedulers.mainThread())
-        //                .subscribe(new Subscriber<AniListService.RepositoryItem>() {
-        //                    @Override
-        //                    public void onCompleted() {
-        //                        // 何もしない
-        //                    }
-        //
-        //                    @Override
-        //                    public void onError(Throwable e) {
-        //                        detailView.showError("読み込めませんでした。");
-        //                    }
-        //
-        //                    @Override
-        //                    public void onNext(AnimePage animePage) {
-        //                        setAnimeData(animePage);
-        //                    }
-        //                });
     }
 
     // データをbind
@@ -164,8 +110,7 @@ class AnimeDetailViewModel(internal val detailView: AnimeDetailContract, private
             animeStudio.set(studio[0].studioName)
         } else {
             animeStudio.set("")
-        }        //        officialSiteUrl.set(item.getOfficialSite());
-        //        twitterUrl.set(item.getTwitterUrl());
+        }
         castList.set(item.casts)
         staffList.set(item.staffs)
     }

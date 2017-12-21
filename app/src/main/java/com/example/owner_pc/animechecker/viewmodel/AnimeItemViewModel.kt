@@ -44,26 +44,20 @@ class AnimeItemViewModel {
         animeName.set(item.animePage.titleJapanese)
         animeImageUrl.set(item.animePage.imageUrlLge)
 
-//        studioName.set(item.animePage.studio!![0].studioName)
         val studio = item.animePage.studio.orEmpty()
         if (studio.isNotEmpty()) {
             studioName.set(studio[0].studioName)
         } else {
             studioName.set("")
         }
-//        studio?.let { s -> studioName.set(s[0].studioName) }
-//        studioName.set(studio[0].studioName ?: "")
         directorName.set(item.director.nameLastJapanese + swapName(item.director.nameFirstJapanese))
         season.set(item.animePage.getSeason())
     }
 
     fun loadSmallItem(item: Anime) {
-        //        animePage = item.animePage;
         anime = item
         animeName.set(item.titleJapanese)
         animeImageUrl.set(item.imageUrlLge)
-        //        studioName.set(item.animePage.studio.get(0).studioName);
-        //        directorName.set(item.director.nameLastJapanese + swapName(item.director.nameFirstJapanese));
         season.set(item.getSeason())
     }
 

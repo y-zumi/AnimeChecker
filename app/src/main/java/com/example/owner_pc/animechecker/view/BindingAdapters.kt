@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 
 
 object BindingAdapters {
-
     @JvmStatic
     @BindingAdapter("imageUrl")
     fun loadImage(imageView: ImageView, imageUrl: String) {
@@ -19,6 +18,5 @@ object BindingAdapters {
         Glide.with(imageView.context)
                 .load(imageUrl)
                 .asBitmap().centerCrop().into(imageView)
-        //                .asBitmap().into(imageView);
     }
 }
