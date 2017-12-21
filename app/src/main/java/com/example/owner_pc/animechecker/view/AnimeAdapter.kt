@@ -55,9 +55,7 @@ class AnimeAdapter(private val context: Context, private val view: AnimeListView
     }
 
     override fun getItemCount(): Int {
-        return if (items == null) {
-            0
-        } else items!!.size
+        return items?.size ?: 0
     }
 
     /**
@@ -65,7 +63,6 @@ class AnimeAdapter(private val context: Context, private val view: AnimeListView
      * ここではViewModelを持つ
      */
     class AnimeViewHolder(itemView: View, private val viewModel: AnimeItemViewModel) : RecyclerView.ViewHolder(itemView) {
-
         fun loadItem(item: AnimeCard) {
             viewModel.loadItem(item)
         }
