@@ -25,20 +25,11 @@ import com.example.owner_pc.animechecker.model.entity.Anime
  * fragment (e.g. upon screen orientation changes).
  */
 class AnimeItemSmallFragment : Fragment(), AnimeSmallListFragmentContract {
-
-    // TODO: Customize parameter argument names
-    //    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    //    private int mColumnCount = 1;
     private lateinit var mListener: OnListFragmentInteractionListener
     private lateinit var adapter: AnimeSmallRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (arguments != null) {
-            //            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -54,11 +45,12 @@ class AnimeItemSmallFragment : Fragment(), AnimeSmallListFragmentContract {
             adapter = AnimeSmallRecyclerViewAdapter(mListener, this as AnimeSmallListFragmentContract)
             view.adapter = adapter
         }
+
         return view
     }
 
     fun showAnimes(animes: List<Anime>) {
-        adapter!!.setItemsAndRefresh(animes)
+        adapter.setItemsAndRefresh(animes)
     }
 
     override fun showError() {
@@ -66,7 +58,7 @@ class AnimeItemSmallFragment : Fragment(), AnimeSmallListFragmentContract {
     }
 
     override fun itemClicked(item: Anime) {
-        mListener!!.onListFragmentInteraction(item)
+        mListener.onListFragmentInteraction(item)
     }
 
     override fun onAttach(context: Context?) {

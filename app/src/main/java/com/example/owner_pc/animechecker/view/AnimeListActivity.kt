@@ -48,17 +48,16 @@ class AnimeListActivity : AppCompatActivity(), AnimeListViewContract, AnimeItemF
     }
 
     // ここでPresenterから指示を受けてViewの変更などを行う
-
     override fun startDetailActivity(animePage: AnimePage) {
         AnimeDetailActivity.start(this, animePage)
     }
 
     override fun showAnimes(animes: List<AnimeCard>) {
-        animeFragment!!.showAnimes(animes)
+        animeFragment.showAnimes(animes)
     }
 
     override fun showError() {
-        Snackbar.make(coordinatorLayout!!, "読み込めませんでした。", Snackbar.LENGTH_LONG)
+        Snackbar.make(coordinatorLayout, "読み込めませんでした。", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
     }
 }

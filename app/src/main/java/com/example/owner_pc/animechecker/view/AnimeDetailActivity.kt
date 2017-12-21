@@ -15,8 +15,6 @@ import com.example.owner_pc.animechecker.model.entity.AnimePage
 import com.example.owner_pc.animechecker.viewmodel.AnimeDetailViewModel
 
 class AnimeDetailActivity : AppCompatActivity(), AnimeDetailContract, AnimeItemSmallFragment.OnListFragmentInteractionListener {
-    //    private static final String EXTRA_FULL_REPOSITORY_NAME = "EXTRA_FULL_REPOSITORY_NAME";
-    //    private String fullRepoName;
     private var directorAnimesFragment: AnimeItemSmallFragment? = null
     private var studioAnimesFragment: AnimeItemSmallFragment? = null
     override var animePage = AnimePage()
@@ -33,19 +31,15 @@ class AnimeDetailActivity : AppCompatActivity(), AnimeDetailContract, AnimeItemS
         animePage = intent.getSerializableExtra(EXTRA_ANIME_PAGE) as AnimePage
         detailViewModel.loadAnimeDetail()
         setupViews()
-        //        detailViewModel.loadRepositories();
     }
 
     private fun setupViews() {
-
         directorAnimesFragment = AnimeItemSmallFragment.newInstance()
         studioAnimesFragment = AnimeItemSmallFragment.newInstance()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.director_animes, directorAnimesFragment)
         transaction.add(R.id.studio_animes, studioAnimesFragment)
         transaction.commit()
-
-
     }
 
 
@@ -61,7 +55,7 @@ class AnimeDetailActivity : AppCompatActivity(), AnimeDetailContract, AnimeItemS
         directorAnimesFragment!!.showAnimes(animes)
     }
 
-    //// TODO: 2017/05/29 AnimeCardではなくAnimeで渡した場合に変更する
+    // TODO: 2017/05/29 AnimeCardではなくAnimeで渡した場合に変更する
     override fun showStudioAnimes(animes: List<Anime>) {
         studioAnimesFragment!!.showAnimes(animes)
     }
@@ -71,7 +65,7 @@ class AnimeDetailActivity : AppCompatActivity(), AnimeDetailContract, AnimeItemS
                 .show()
     }
 
-    //// TODO: 2017/05/29 あたらしいdetailActivity立ち上げ
+    // TODO: 2017/05/29 あたらしいdetailActivity立ち上げ
     override fun onListFragmentInteraction(item: Anime) {
 
     }

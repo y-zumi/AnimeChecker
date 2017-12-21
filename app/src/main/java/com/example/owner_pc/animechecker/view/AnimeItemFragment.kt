@@ -17,18 +17,6 @@ import com.example.owner_pc.animechecker.model.entity.AnimePage
 import com.example.owner_pc.animechecker.view.AnimeRecyclerViewAdapter.Companion.VIEWTYPE_GRID
 import com.example.owner_pc.animechecker.view.AnimeRecyclerViewAdapter.Companion.VIEWTYPE_HORIZONTAL
 
-
-/**
- * A fragment representing a list of Items.
- *
- *
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
- * interface.
- */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- */
 class AnimeItemFragment : Fragment(), AnimeListFragmentContract {
     private var viewType = VIEWTYPE_GRID
     private lateinit var mListener: OnListFragmentInteractionListener
@@ -57,7 +45,6 @@ class AnimeItemFragment : Fragment(), AnimeListFragmentContract {
                     view.layoutManager = manager
                 }
             }
-            //            recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
             adapter = AnimeRecyclerViewAdapter(mListener, this as AnimeListFragmentContract, this.viewType)
             view.adapter = adapter
         }
@@ -89,25 +76,13 @@ class AnimeItemFragment : Fragment(), AnimeListFragmentContract {
         super.onDetach()
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onListFragmentInteraction(item: AnimePage)
     }
 
     companion object {
-
         private val ARG_VIEW_TYPE = "view-type"
 
-        // TODO: Customize parameter initialization
         fun newInstance(viewType: Int): AnimeItemFragment {
             val fragment = AnimeItemFragment()
             val args = Bundle()
